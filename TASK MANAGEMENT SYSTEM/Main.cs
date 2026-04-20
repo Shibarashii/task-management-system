@@ -15,7 +15,7 @@ namespace TASK_MANAGEMENT_SYSTEM
 {
     public class Main
     {
-        public static string ConnectionString = "server=localhost; database=barangay_task_management_system; username=root; password=;";
+        public static string ConnectionString = "server=localhost; database=task_management_system_db; username=root; password=;";
 
         public static Label CreateLabel(string text, Font font, Color foreColor, Color backColor, Point location, bool autoSize = true, bool autoEllipsis = true, Size? size = null, Cursor cursor = null)
         {

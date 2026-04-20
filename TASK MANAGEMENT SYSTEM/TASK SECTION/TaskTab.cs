@@ -560,10 +560,11 @@ namespace TASK_MANAGEMENT_SYSTEM.TASK_SECTION
             addTaskForm.ShowDialog();
         }
 
+        private bool isPopulating = false;
         private void PopulateProjectComboBox()
         {
+            isPopulating = true;
             string selectedProject = ProjectComboBox.SelectedItem?.ToString();
-
             string defaultProject = "--ALL PROJECTS--";
             ProjectComboBox.Items.Clear();
             ProjectComboBox.Items.Add(defaultProject);
@@ -592,12 +593,14 @@ namespace TASK_MANAGEMENT_SYSTEM.TASK_SECTION
             {
                 ProjectComboBox.SelectedIndex = 0;
             }
+            isPopulating = false;
         }
-
 
 
         private void ProjectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (isPopulating) return;
+
             if (ProjectComboBox.SelectedIndex != 0)
             {
                 SearchTextbox.Enabled = false; 
