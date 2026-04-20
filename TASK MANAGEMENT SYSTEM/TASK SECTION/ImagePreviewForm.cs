@@ -30,22 +30,32 @@ namespace TASK_MANAGEMENT_SYSTEM.TASK_SECTION
                 SizeMode = PictureBoxSizeMode.Zoom
             };
 
-            if (imageData != null)
+            if (imageData != null && imageData.Length > 0) // 👈 check for empty too
             {
-                using (MemoryStream ms = new MemoryStream(imageData))
+                try
                 {
+                    MemoryStream ms = new MemoryStream(imageData); // 👈 no 'using' here
                     pictureBox.Image = Image.FromStream(ms);
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Could not load image: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No image attached.", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Optionally close the form immediately
+                Load += (s, e) => Close();
+                return;
             }
 
             Controls.Add(pictureBox);
 
-
-            // Set form properties
             Text = "Image Preview";
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            MinimumSize = new Size(700, 700); // Set a minimum size if needed
+            MinimumSize = new Size(700, 700);
             Resize += (sender, e) => ResizeForm(pictureBox.Image);
         }
 

@@ -108,7 +108,7 @@ namespace TASK_MANAGEMENT_SYSTEM.TASK_SECTION
                     {
                         string selectedFileName = openFileDialog.FileName;
                         string attachedImageName = Path.GetFileName(selectedFileName); // Extract the file name from the path
-                        attachedImage = File.ReadAllBytes(selectedFileName);
+                        attachedImage = CompressImage(File.ReadAllBytes(selectedFileName)); // 👈 wrap here
 
                         if (attachedImage != null)
                         {
@@ -267,6 +267,25 @@ namespace TASK_MANAGEMENT_SYSTEM.TASK_SECTION
                             }
                         }
                     }
+                }
+            }
+        }
+
+        private byte[] CompressImage(byte[] imageBytes, int maxWidth = 800, int maxHeight = 800)
+        {
+            using (MemoryStream ms = new MemoryStream(imageBytes))
+            using (Image original = Image.FromStream(ms))
+            {
+                // Calculate new size while keeping aspect ratio
+                float ratio = Math.Min((float)maxWidth / original.Width, (float)maxHeight / original.Height);
+                int newWidth = (int)(original.Width * ratio);
+                int newHeight = (int)(original.Height * ratio);
+
+                using (Bitmap resized = new Bitmap(original, newWidth, newHeight))
+                using (MemoryStream output = new MemoryStream())
+                {
+                    resized.Save(output, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    return output.ToArray();
                 }
             }
         }
