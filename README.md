@@ -1,5 +1,9 @@
 # 📋 Task Management System
 
+<p align="center">
+  <img src="img/00-logo.png" alt="Task Management System Logo" width="300">
+</p>
+
 A **Windows Forms desktop application** for managing projects, tasks, and users — built with **C#** and **.NET Framework 4.7.2**. This system supports role-based access control, real-time progress tracking, email-based account recovery, and task completion submissions with image attachments.
 
 > **📚 Academic Project** — 2nd Year College · Data Structures and Algorithms · 2023
@@ -9,12 +13,20 @@ A **Windows Forms desktop application** for managing projects, tasks, and users 
 ## ✨ Features
 
 ### 🔐 Authentication
+
 - Email and password login
 - **Password recovery via email** — sends a 6-digit recovery code using the **SendGrid** API
 - Recovery code verification with access to profile editing upon successful recovery
 - Role-based access: **Superuser (Admin)** and **Regular User**
 
+<p align="center">
+  <img src="img/01-login.png" alt="Login Screen" width="700">
+  <br>
+  <em>Login screen with email & password authentication</em>
+</p>
+
 ### 📊 Dashboard
+
 - Overview of all projects with progress bars and completion percentages
 - Summary counts: finished projects vs. total projects, finished tasks vs. total tasks
 - Sortable columns: name, progress, start date, due date, status
@@ -25,7 +37,14 @@ A **Windows Forms desktop application** for managing projects, tasks, and users 
   - 🔴 **Missed** — Past due date and incomplete
 - Auto-updates project status based on task completion and deadlines
 
+<p align="center">
+  <img src="img/02-dashboard.png" alt="Dashboard" width="700">
+  <br>
+  <em>Dashboard with project overview, progress bars, and color-coded statuses</em>
+</p>
+
 ### 📁 Project Management
+
 - **Create, edit, and delete** projects (admin only for edit/delete)
 - Project fields: name, description, start date, due date
 - Unique project name enforcement
@@ -36,7 +55,20 @@ A **Windows Forms desktop application** for managing projects, tasks, and users 
 - Automatic progress calculation based on task completion
 - Soft-delete (archive) — cascades to associated tasks and task-user assignments
 
+<p align="center">
+  <img src="img/03-projects.png" alt="Projects List" width="700">
+  <br>
+  <em>Projects list — search, filter by status, sort columns, and manage via action buttons</em>
+</p>
+
+<p align="center">
+  <img src="img/08-sample-project-view.png" alt="Project Detail View" width="700">
+  <br>
+  <em>Project detail view — description, progress, status indicators, and associated task list</em>
+</p>
+
 ### ✅ Task Management
+
 - **Create, edit, and delete** tasks (admin only for edit/delete)
 - Assign tasks to a project (with auto-populated date ranges from the project)
 - **Assign multiple users** to each task via a checklist
@@ -55,7 +87,20 @@ A **Windows Forms desktop application** for managing projects, tasks, and users 
 - **Filter** by project and/or status
 - **Sort** by name, project, start date, due date, or status
 
-### 👥 User Management *(Admin Only)*
+<p align="center">
+  <img src="img/04-tasks.png" alt="Tasks List" width="700">
+  <br>
+  <em>Tasks list — filter by project and status, sort columns, and manage via action buttons</em>
+</p>
+
+<p align="center">
+  <img src="img/07-sample-task-view.png" alt="Task Detail View" width="700">
+  <br>
+  <em>Task detail view — description, assigned users, and options to mark as finished or submit completion</em>
+</p>
+
+### 👥 User Management _(Admin Only)_
+
 - **Create, edit, and delete** users
 - User fields: first name, middle name, last name, email, password
 - Assign admin privileges via checkbox
@@ -72,16 +117,16 @@ A **Windows Forms desktop application** for managing projects, tasks, and users 
 
 ## 🛠️ Tech Stack
 
-| Component        | Technology                                                  |
-|------------------|-------------------------------------------------------------|
-| **Language**      | C# (.NET Framework 4.7.2)                                   |
-| **UI Framework**  | Windows Forms (WinForms)                                    |
-| **UI Libraries**  | Guna UI2 (modern controls), Krypton Toolkit (form theming)  |
-| **Database**      | MySQL / MariaDB                                             |
-| **DB Connector**  | MySql.Data (MySQL Connector/NET 8.2.0)                      |
-| **Email Service** | SendGrid API (v9.28.1)                                      |
-| **Environment**   | DotNetEnv (`.env` file support)                             |
-| **IDE**           | Visual Studio                                               |
+| Component         | Technology                                                 |
+| ----------------- | ---------------------------------------------------------- |
+| **Language**      | C# (.NET Framework 4.7.2)                                  |
+| **UI Framework**  | Windows Forms (WinForms)                                   |
+| **UI Libraries**  | Guna UI2 (modern controls), Krypton Toolkit (form theming) |
+| **Database**      | MySQL / MariaDB                                            |
+| **DB Connector**  | MySql.Data (MySQL Connector/NET 8.2.0)                     |
+| **Email Service** | SendGrid API (v9.28.1)                                     |
+| **Environment**   | DotNetEnv (`.env` file support)                            |
+| **IDE**           | Visual Studio                                              |
 
 ---
 
@@ -144,10 +189,10 @@ erDiagram
 
 ### Status Enums
 
-| Entity   | Possible Values                        |
-|----------|----------------------------------------|
+| Entity   | Possible Values                            |
+| -------- | ------------------------------------------ |
 | Projects | `Started`, `Ongoing`, `Finished`, `Missed` |
-| Tasks    | `Pending`, `Finished`, `Missed`         |
+| Tasks    | `Pending`, `Finished`, `Missed`            |
 
 ---
 
@@ -206,7 +251,7 @@ TASK MANAGEMENT SYSTEM/
 - **Visual Studio** (2019 or later recommended)
 - **.NET Framework 4.7.2** (targeting runtime)
 - **XAMPP** or any **MySQL/MariaDB** server
-- **SendGrid account** *(optional — only for email recovery feature)*
+- **SendGrid account** _(optional — only for email recovery feature)_
 
 ### Database Setup
 
@@ -244,9 +289,9 @@ TASK MANAGEMENT SYSTEM/
 
 ### Default Credentials
 
-| Role          | Email   | Password |
-|---------------|---------|----------|
-| **Admin**     | `admin` | `admin`  |
+| Role             | Email   | Password |
+| ---------------- | ------- | -------- |
+| **Admin**        | `admin` | `admin`  |
 | **Regular User** | `user`  | `user`   |
 
 ---
